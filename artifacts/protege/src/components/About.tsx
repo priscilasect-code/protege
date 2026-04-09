@@ -26,6 +26,9 @@ export function About() {
                 Nosso diferencial é a abordagem prática. Não fazemos apenas apresentações teóricas; criamos simulações dinâmicas, interativas e reais. Mostramos na prática como usar equipamentos, como evitar riscos e, acima de tudo, por que a vida é nosso maior patrimônio.
               </p>
             </div>
+            <h3 className="font-display text-3xl md:text-4xl mt-10 text-secondary">
+              Metas para o Futuro
+            </h3>
           </motion.div>
 
           <motion.div

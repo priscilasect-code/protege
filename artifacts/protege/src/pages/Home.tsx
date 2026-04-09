@@ -1,0 +1,30 @@
+import React from "react";
+import { Navbar } from "@/components/Navbar";
+import { Hero } from "@/components/Hero";
+import { Values } from "@/components/Values";
+import { About } from "@/components/About";
+import { Services } from "@/components/Services";
+import { Projects } from "@/components/Projects";
+import { Topics } from "@/components/Topics";
+import { Benefits } from "@/components/Benefits";
+import { Contact } from "@/components/Contact";
+import { Footer } from "@/components/Footer";
+
+export default function Home() {
+  return (
+    <div className="overflow-x-hidden">
+      <Navbar />
+      <main>
+        <Hero />
+        <Values />
+        <About />
+        <Services />
+        <Projects />
+        <Topics />
+        <Benefits />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
+  );
+}

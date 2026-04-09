@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "PROTEGE – Consultoria em Segurança do Trabalho"
+version = "1.0.0"
+id = "artifacts/protege"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25452
+
+[services.development]
+run = "pnpm --filter @workspace/protege run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/protege", "run", "build" ]
+publicDir = "artifacts/protege/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25452"
+BASE_PATH = "/"

@@ -18,6 +18,14 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
+          <div className="flex justify-center mb-6">
+            <img
+              src="https://i.ibb.co/fdFHYm4n/IMG-20260326-WA0020.jpg"
+              alt="PROTEGE Logo"
+              className="h-28 w-28 md:h-36 md:w-36 rounded-2xl object-cover shadow-2xl ring-4 ring-secondary/50"
+              onError={(e) => (e.currentTarget.style.display = "none")}
+            />
+          </div>
           <span className="inline-block py-1 px-3 rounded-full bg-secondary/20 text-secondary font-bold text-sm tracking-widest mb-6 uppercase border border-secondary/30">
             Consultoria em Segurança do Trabalho
           </span>

@@ -20,7 +20,7 @@ export function About() {
             </h2>
             <div className="space-y-6 text-lg text-primary-foreground/80">
               <p>
-                A PROTEGE nasceu em Ibiraçu, ES, com uma missão clara: democratizar o acesso à segurança do trabalho. Acreditamos que conhecimento salva vidas, e toda empresa, não importa o tamanho, merece um ambiente seguro para sua equipe.
+                A PROTEGE nasceu em João Neiva, ES, com uma missão clara: democratizar o acesso à segurança do trabalho. Acreditamos que conhecimento salva vidas, e toda empresa, não importa o tamanho, merece um ambiente seguro para sua equipe.
               </p>
               <p>
                 Nosso diferencial é a abordagem prática. Não fazemos apenas apresentações teóricas; criamos simulações dinâmicas, interativas e reais. Mostramos na prática como usar equipamentos, como evitar riscos e, acima de tudo, por que a vida é nosso maior patrimônio.

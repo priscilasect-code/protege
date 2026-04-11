@@ -48,7 +48,7 @@ export function Contact() {
               {[
                 { icon: Phone, label: "(11) 9999-9999" },
                 { icon: Mail, label: "Protege@gmail.com" },
-                { icon: MapPin, label: "Ibiraçu, ES" },
+                { icon: MapPin, label: "João Neiva, ES" },
               ].map(({ icon: Icon, label }) => (
                 <div key={label} className="flex items-center gap-4">
                   <div className="w-10 h-10 bg-foreground flex items-center justify-center flex-shrink-0">

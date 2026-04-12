@@ -48,7 +48,7 @@ export function Navbar() {
             className="flex items-center gap-3 z-50 group"
           >
             <img
-              src="https://i.ibb.co/fdFHYm4n/IMG-20260326-WA0020.jpg"
+              src="https://i.ibb.co/HTTXvH71/1775998701478.png"
               alt="PROTEGE Logo"
               className="h-10 w-10 md:h-12 md:w-12 rounded-sm object-cover group-hover:scale-105 transition-transform"
               onError={(e) => (e.currentTarget.style.display = "none")}

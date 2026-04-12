@@ -8,7 +8,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
             <img
-              src="https://i.ibb.co/fdFHYm4n/IMG-20260326-WA0020.jpg"
+              src="https://i.ibb.co/HTTXvH71/1775998701478.png"
               alt="PROTEGE Logo"
               className="h-8 w-8 rounded object-cover"
               onError={(e) => (e.currentTarget.style.display = "none")}

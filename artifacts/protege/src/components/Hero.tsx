@@ -34,7 +34,7 @@ export function Hero() {
             <span className="text-secondary">É INVESTIMENTO EM VIDA.</span>
           </h1>
           <p className="text-lg md:text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Levamos conhecimento prático e real para sua empresa. Protege quem constrói o seu negócio todos os dias com treinamentos interativos e foco humano.
+            Levamos conhecimento prático e real para sua empresa. Protegemos quem constrói o seu negócio todos os dias com treinamentos interativos e foco humano.
           </p>
           
           <Button 

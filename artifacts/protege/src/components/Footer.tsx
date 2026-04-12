@@ -10,7 +10,7 @@ export function Footer() {
             <img
               src="https://i.ibb.co/HTTXvH71/1775998701478.png"
               alt="PROTEGE Logo"
-              className="h-8 w-8 object-cover"
+              className="h-8 w-8 object-contain"
               onError={(e) => (e.currentTarget.style.display = "none")}
             />
             <span className="font-display text-xl tracking-wider" style={{ color: "#f5f0eb" }}>

@@ -22,7 +22,7 @@ export function Hero() {
             <img
               src="https://i.ibb.co/HTTXvH71/1775998701478.png"
               alt="PROTEGE Logo"
-              className="h-28 w-28 md:h-36 md:w-36 object-cover shadow-2xl ring-4 ring-secondary/50"
+              className="h-28 w-28 md:h-36 md:w-36 object-contain shadow-2xl ring-4 ring-secondary/50"
               onError={(e) => (e.currentTarget.style.display = "none")}
             />
           </div>

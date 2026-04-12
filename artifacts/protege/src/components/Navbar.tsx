@@ -50,7 +50,7 @@ export function Navbar() {
             <img
               src="https://i.ibb.co/HTTXvH71/1775998701478.png"
               alt="PROTEGE Logo"
-              className="h-10 w-10 md:h-12 md:w-12 object-cover group-hover:scale-105 transition-transform"
+              className="h-10 w-10 md:h-12 md:w-12 object-contain group-hover:scale-105 transition-transform"
               onError={(e) => (e.currentTarget.style.display = "none")}
             />
             <span className="font-display text-2xl md:text-3xl text-primary-foreground tracking-wider group-hover:text-secondary transition-colors">

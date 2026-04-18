@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 
 export function About() {
   return (
-    <section id="quem-somos" className="py-24 bg-primary text-primary-foreground overflow-hidden relative">
+    <section id="quem-somos" className="py-16 md:py-24 bg-primary text-primary-foreground overflow-hidden relative">
       <div className="absolute -right-64 -top-64 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -15,7 +15,7 @@ export function About() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-display text-5xl md:text-6xl mb-6 leading-none">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl mb-6 leading-none">
               LEVAMOS CONHECIMENTO DE <span className="text-secondary">SEGURANÇA PARA TODOS.</span>
             </h2>
             <div className="space-y-6 text-lg text-primary-foreground/80">

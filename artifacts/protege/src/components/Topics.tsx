@@ -50,13 +50,13 @@ const TOPICS = [
 
 export function Topics() {
   return (
-    <section id="temas" className="py-24 bg-primary">
+    <section id="temas" className="py-16 md:py-24 bg-primary">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
           <span className="inline-block py-1 px-3 rounded-full bg-secondary/20 text-secondary font-bold text-xs tracking-widest uppercase border border-secondary/30 mb-4">
             Temas de Segurança
           </span>
-          <h2 className="font-display text-5xl text-primary-foreground">
+          <h2 className="font-display text-4xl md:text-5xl text-primary-foreground">
             Conheça os Principais Riscos
           </h2>
         </div>

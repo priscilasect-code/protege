@@ -8,7 +8,7 @@ export function Hero() {
   };
 
   return (
-    <section id="home" className="relative min-h-[90vh] flex items-center justify-center pt-32 pb-16 overflow-hidden bg-primary">
+    <section id="home" className="relative min-h-[90vh] flex items-center justify-center pt-20 pb-10 md:pt-32 md:pb-16 overflow-hidden bg-primary">
       <div className="absolute inset-0 bg-pattern-diagonal opacity-20 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent pointer-events-none" />
       
@@ -29,7 +29,7 @@ export function Hero() {
           <span className="inline-block py-1 px-3 rounded-full bg-secondary/20 text-secondary font-bold text-sm tracking-widest mb-6 uppercase border border-secondary/30">
             Consultoria em Segurança do Trabalho
           </span>
-          <h1 className="font-display text-6xl md:text-7xl lg:text-8xl text-primary-foreground leading-[0.9] mb-8">
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-primary-foreground leading-[0.9] mb-8">
             SEGURANÇA NÃO É GASTO,<br />
             <span className="text-secondary">É INVESTIMENTO EM VIDA.</span>
           </h1>

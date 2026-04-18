@@ -37,11 +37,11 @@ export function Services() {
   };
 
   return (
-    <section id="servicos" className="py-24 bg-background">
+    <section id="servicos" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="font-display text-5xl text-foreground mb-4">NOSSOS SERVIÇOS</h2>
+          <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">NOSSOS SERVIÇOS</h2>
           <p className="text-muted-foreground text-lg">
             Soluções completas e práticas para garantir um ambiente de trabalho mais seguro, produtivo e dentro da lei.
           </p>

@@ -26,13 +26,13 @@ const PROJECTS = [
 
 export function Projects() {
   return (
-    <section id="projetos" className="py-24 bg-background">
+    <section id="projetos" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
           <span className="inline-block py-1 px-3 rounded-full bg-secondary/20 text-secondary font-bold text-xs tracking-widest uppercase border border-secondary/30 mb-4">
             Nossos Projetos
           </span>
-          <h2 className="font-display text-5xl text-foreground">
+          <h2 className="font-display text-4xl md:text-5xl text-foreground">
             Projetos Já Desenvolvidos
           </h2>
         </div>

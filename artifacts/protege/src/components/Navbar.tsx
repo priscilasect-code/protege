@@ -35,6 +35,7 @@ export function Navbar() {
   return (
     <>
       <div className="caution-stripe h-[6px] w-full fixed top-0 z-50" />
+
       <nav
         className={cn(
           "fixed top-[6px] left-0 right-0 z-40 transition-all duration-300 bg-primary/95 backdrop-blur-md",
@@ -45,7 +46,7 @@ export function Navbar() {
           <a
             href="#home"
             onClick={(e) => scrollTo(e, "#home")}
-            className="flex items-center gap-3 z-50 group"
+            className="flex items-center gap-3 group"
           >
             <img
               src="https://i.ibb.co/HTTXvH71/1775998701478.png"
@@ -58,7 +59,6 @@ export function Navbar() {
             </span>
           </a>
 
-          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
               <a
@@ -73,34 +73,44 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* Mobile Toggle */}
           <button
-            className="md:hidden text-primary-foreground z-50 p-2"
+            className="md:hidden text-primary-foreground p-2 z-[70] relative"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Abrir menu"
           >
             {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
-
-        {/* Mobile Nav */}
-        <div
-          className={cn(
-            "fixed inset-0 bg-primary z-40 flex flex-col items-center justify-center gap-8 transition-all duration-300 md:hidden",
-            mobileMenuOpen ? "translate-y-0 opacity-100 visible" : "-translate-y-full opacity-0 invisible"
-          )}
-        >
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={(e) => scrollTo(e, link.href)}
-              className="text-2xl font-display text-primary-foreground hover:text-secondary transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
       </nav>
+
+      {/* Menu mobile — fora da nav para evitar conflito de camadas */}
+      <div
+        className={cn(
+          "fixed inset-0 bg-primary z-[60] flex flex-col items-center justify-center gap-8 transition-all duration-300 md:hidden",
+          mobileMenuOpen
+            ? "opacity-100 visible translate-y-0"
+            : "opacity-0 invisible -translate-y-full"
+        )}
+      >
+        <button
+          className="absolute top-4 right-4 text-primary-foreground p-2"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-label="Fechar menu"
+        >
+          <X size={32} />
+        </button>
+
+        {NAV_LINKS.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            onClick={(e) => scrollTo(e, link.href)}
+            className="text-3xl font-display text-primary-foreground hover:text-secondary transition-colors"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
     </>
   );
 }

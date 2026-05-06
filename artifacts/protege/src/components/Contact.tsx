@@ -4,6 +4,8 @@ import { Phone, Mail, MapPin, Instagram, Linkedin, Facebook, Send } from "lucide
 
 export function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
+  const [sending, setSending] = useState(false);
   const [form, setForm] = useState({
     name: "",
     company: "",
@@ -13,11 +15,35 @@ export function Contact() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setForm({ name: "", company: "", email: "", phone: "", service: "", message: "" });
-    setTimeout(() => setSubmitted(false), 5000);
+    setSending(true);
+    setError(false);
+    try {
+      const res = await fetch("https://formspree.io/f/mvzlrran", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          Nome: form.name,
+          Empresa: form.company,
+          Email: form.email,
+          Telefone: form.phone,
+          Servico: form.service,
+          Mensagem: form.message,
+        }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+        setForm({ name: "", company: "", email: "", phone: "", service: "", message: "" });
+        setTimeout(() => setSubmitted(false), 6000);
+      } else {
+        setError(true);
+      }
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputClass =
@@ -160,14 +186,20 @@ export function Contact() {
               </div>
               <button
                 type="submit"
-                className="w-full py-4 bg-secondary text-secondary-foreground font-bold text-lg flex items-center justify-center gap-2 hover:bg-secondary/90 hover:scale-[1.02] transition-all duration-200 shadow-md"
+                disabled={sending}
+                className="w-full py-4 bg-secondary text-secondary-foreground font-bold text-lg flex items-center justify-center gap-2 hover:bg-secondary/90 hover:scale-[1.02] transition-all duration-200 shadow-md disabled:opacity-70 disabled:cursor-not-allowed disabled:scale-100"
               >
                 <Send size={18} />
-                Enviar Mensagem
+                {sending ? "Enviando..." : "Enviar Mensagem"}
               </button>
               {submitted && (
                 <div className="p-4 bg-green-50 border border-green-200 text-green-800 text-sm font-semibold text-center">
                   ✅ Mensagem enviada com sucesso! Entraremos em contato em breve.
+                </div>
+              )}
+              {error && (
+                <div className="p-4 bg-red-50 border border-red-200 text-red-800 text-sm font-semibold text-center">
+                  ❌ Erro ao enviar. Verifique sua conexão e tente novamente.
                 </div>
               )}
             </form>

@@ -73,7 +73,7 @@ export function Contact() {
             <div className="space-y-5">
               {[
                 { icon: Phone, label: "(11) 9999-9999" },
-                { icon: Mail, label: "Protege@gmail.com" },
+                { icon: Mail, label: "protegeconsultoria@proton.me" },
                 { icon: MapPin, label: "João Neiva, ES" },
               ].map(({ icon: Icon, label }) => (
                 <div key={label} className="flex items-center gap-4">

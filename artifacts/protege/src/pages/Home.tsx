@@ -10,6 +10,7 @@ import { Menu } from "@/components/Menu";
 import { Benefits } from "@/components/Benefits";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }

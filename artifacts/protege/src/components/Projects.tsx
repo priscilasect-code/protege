@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle, ChevronLeft, ChevronRight, Users } from "lucide-react";
+import { CheckCircle, Users } from "lucide-react";
 
 const CAROUSEL_IMAGES = [
   "/granitos-litoral-dds.png",
@@ -159,20 +159,6 @@ function ImageCarousel() {
           />
         </AnimatePresence>
 
-        <button
-          onClick={() => go(-1)}
-          className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-primary p-2 rounded-full shadow transition-all z-10"
-          aria-label="Anterior"
-        >
-          <ChevronLeft size={18} />
-        </button>
-        <button
-          onClick={() => go(1)}
-          className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-primary p-2 rounded-full shadow transition-all z-10"
-          aria-label="Próxima"
-        >
-          <ChevronRight size={18} />
-        </button>
       </div>
 
       {/* Indicadores abaixo da imagem */}

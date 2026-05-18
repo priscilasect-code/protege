@@ -39,9 +39,9 @@ export function About() {
             className="grid grid-cols-2 gap-4 md:gap-6"
           >
             {[
-              { num: "500+", label: "Treinamentos Realizados" },
+              { num: "500+", label: "Treinamentos a Realizar" },
               { num: "98%", label: "Índice de Satisfação" },
-              { num: "50+", label: "Empresas Atendidas" },
+              { num: "50+", label: "Empresas a Serem Atendidas" },
               { num: "0", label: "Meta de Acidentes" },
             ].map((stat, i) => (
               <div 

@@ -22,9 +22,9 @@ type DonutData = { otimo: number; bom: number; ruim: number };
 
 function DonutChart({ data, label }: { data: DonutData; label: string }) {
   const total = data.otimo + data.bom + data.ruim;
-  const r = 38;
-  const cx = 50;
-  const cy = 50;
+  const r = 42;
+  const cx = 60;
+  const cy = 60;
   const circ = 2 * Math.PI * r;
 
   const segments = [
@@ -37,15 +37,18 @@ function DonutChart({ data, label }: { data: DonutData; label: string }) {
   const arcs = segments.map((seg) => {
     const pct = seg.value / total;
     const dash = pct * circ;
-    const arc = { ...seg, dash, offset, pct: Math.round(pct * 100) };
+    const arc = { ...seg, dash, offset, pct };
     offset += dash;
     return arc;
   });
 
+  const topLabel = [...segments].sort((a, b) => b.value - a.value)[0];
+  const topPct = Math.round((topLabel.value / total) * 100);
+
   return (
-    <div className="flex flex-col items-center gap-2">
-      <svg viewBox="0 0 100 100" width={100} height={100}>
-        <circle cx={cx} cy={cy} r={r} fill="none" stroke="#f3f4f6" strokeWidth={12} />
+    <div className="flex flex-col items-center gap-3">
+      <svg viewBox="0 0 120 120" width={140} height={140}>
+        <circle cx={cx} cy={cy} r={r} fill="none" stroke="#f3f4f6" strokeWidth={14} />
         {arcs.map((arc) =>
           arc.value > 0 ? (
             <circle
@@ -55,27 +58,34 @@ function DonutChart({ data, label }: { data: DonutData; label: string }) {
               r={r}
               fill="none"
               stroke={arc.color}
-              strokeWidth={12}
+              strokeWidth={14}
               strokeDasharray={`${arc.dash} ${circ - arc.dash}`}
               strokeDashoffset={-(arc.offset - circ / 4)}
               strokeLinecap="butt"
             />
           ) : null
         )}
+        <text x={cx} y={cy - 6} textAnchor="middle" fontSize="18" fontWeight="bold" fill={topLabel.color}>
+          {topPct}%
+        </text>
+        <text x={cx} y={cy + 10} textAnchor="middle" fontSize="9" fill="#6b7280">
+          {topLabel.key}
+        </text>
       </svg>
 
-      <p className="text-[10px] text-center text-muted-foreground font-semibold leading-snug max-w-[130px]">
+      <p className="text-xs text-center text-muted-foreground font-medium leading-snug max-w-[160px]">
         {label}
       </p>
 
-      <div className="flex flex-col gap-0.5 text-[10px] w-full">
-        {arcs.map((s) => (
-          <span key={s.key} className="flex items-center justify-between gap-1 text-muted-foreground">
-            <span className="flex items-center gap-1">
-              <span className="w-2 h-2 rounded-full inline-block shrink-0" style={{ background: s.color }} />
-              {s.key}
-            </span>
-            <span className="font-semibold" style={{ color: s.color }}>{s.pct}%</span>
+      <div className="flex gap-3 text-xs">
+        {[
+          { label: "Ótimo", value: data.otimo, color: COLORS.otimo },
+          { label: "Bom", value: data.bom, color: COLORS.bom },
+          { label: "Ruim", value: data.ruim, color: COLORS.ruim },
+        ].map((s) => (
+          <span key={s.label} className="flex items-center gap-1 text-muted-foreground">
+            <span className="w-2 h-2 rounded-full inline-block" style={{ background: s.color }} />
+            {s.label} ({s.value})
           </span>
         ))}
       </div>

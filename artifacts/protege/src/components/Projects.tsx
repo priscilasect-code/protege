@@ -113,54 +113,79 @@ const DDS_CHARTS: { data: DonutData; label: string }[] = [
 function ImageCarousel() {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
+  const touchStartX = React.useRef<number | null>(null);
 
   const go = (dir: number) => {
     setDirection(dir);
     setCurrent((prev) => (prev + dir + CAROUSEL_IMAGES.length) % CAROUSEL_IMAGES.length);
   };
 
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) go(diff > 0 ? 1 : -1);
+    touchStartX.current = null;
+  };
+
   return (
-    <div className="relative overflow-hidden bg-neutral-100" style={{ height: 520 }}>
-      <AnimatePresence mode="wait" custom={direction}>
-        <motion.img
-          key={current}
-          src={CAROUSEL_IMAGES[current]}
-          alt={`Foto ${current + 1}`}
-          custom={direction}
-          variants={{
-            enter: (d: number) => ({ x: d > 0 ? "100%" : "-100%", opacity: 0 }),
-            center: { x: 0, opacity: 1 },
-            exit: (d: number) => ({ x: d > 0 ? "-100%" : "100%", opacity: 0 }),
-          }}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{ duration: 0.4, ease: "easeInOut" }}
-          className="absolute inset-0 w-full h-full object-contain"
-        />
-      </AnimatePresence>
-
-      <button
-        onClick={() => go(-1)}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-primary p-2.5 rounded-full shadow transition-all z-10"
-        aria-label="Anterior"
+    <div>
+      <div
+        className="relative overflow-hidden bg-neutral-100"
+        style={{ height: 520 }}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
       >
-        <ChevronLeft size={20} />
-      </button>
-      <button
-        onClick={() => go(1)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-primary p-2.5 rounded-full shadow transition-all z-10"
-        aria-label="Próxima"
-      >
-        <ChevronRight size={20} />
-      </button>
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.img
+            key={current}
+            src={CAROUSEL_IMAGES[current]}
+            alt={`Foto ${current + 1}`}
+            custom={direction}
+            variants={{
+              enter: (d: number) => ({ x: d > 0 ? "100%" : "-100%", opacity: 0 }),
+              center: { x: 0, opacity: 1 },
+              exit: (d: number) => ({ x: d > 0 ? "-100%" : "100%", opacity: 0 }),
+            }}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full object-contain select-none"
+            draggable={false}
+          />
+        </AnimatePresence>
 
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        <button
+          onClick={() => go(-1)}
+          className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-primary p-2 rounded-full shadow transition-all z-10"
+          aria-label="Anterior"
+        >
+          <ChevronLeft size={18} />
+        </button>
+        <button
+          onClick={() => go(1)}
+          className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-primary p-2 rounded-full shadow transition-all z-10"
+          aria-label="Próxima"
+        >
+          <ChevronRight size={18} />
+        </button>
+      </div>
+
+      {/* Indicadores abaixo da imagem */}
+      <div className="flex justify-center items-center gap-1.5 py-3 bg-white">
         {CAROUSEL_IMAGES.map((_, i) => (
           <button
             key={i}
             onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
-            className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? "bg-secondary w-6" : "bg-white/70 w-1.5"}`}
+            className={`rounded-full transition-all duration-300 ${
+              i === current
+                ? "bg-primary w-4 h-1.5"
+                : "bg-border w-1.5 h-1.5 hover:bg-primary/40"
+            }`}
             aria-label={`Foto ${i + 1}`}
           />
         ))}

@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { href: "#quem-somos", label: "QUEM SOMOS" },
   { href: "#servicos", label: "SERVIÇOS" },
   { href: "#projetos", label: "TRABALHOS" },
-  { href: "#temas", label: "TEMAS" },
+  { href: "#temas", label: "RISCOS" },
   { href: "#cardapio", label: "CARDÁPIO" },
   { href: "#contato", label: "CONTATO" },
 ];

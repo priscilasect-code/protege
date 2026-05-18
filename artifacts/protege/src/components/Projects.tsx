@@ -1,24 +1,90 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, ChevronLeft, ChevronRight, Users } from "lucide-react";
+
+const CAROUSEL_IMAGES = [
+  "/granitos-litoral-dds.png",
+  "/granitos-litoral-01.jpg",
+  "/granitos-litoral-04.jpg",
+  "/granitos-litoral-03.jpg",
+  "/granitos-litoral-05.jpg",
+  "/granitos-litoral-02.jpg",
+];
+
+function ImageCarousel() {
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  const go = (dir: number) => {
+    setDirection(dir);
+    setCurrent((prev) => (prev + dir + CAROUSEL_IMAGES.length) % CAROUSEL_IMAGES.length);
+  };
+
+  return (
+    <div className="relative overflow-hidden bg-black" style={{ height: 380 }}>
+      <AnimatePresence mode="wait" custom={direction}>
+        <motion.img
+          key={current}
+          src={CAROUSEL_IMAGES[current]}
+          alt={`Foto ${current + 1}`}
+          custom={direction}
+          variants={{
+            enter: (d: number) => ({ x: d > 0 ? "100%" : "-100%", opacity: 0 }),
+            center: { x: 0, opacity: 1 },
+            exit: (d: number) => ({ x: d > 0 ? "-100%" : "100%", opacity: 0 }),
+          }}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ duration: 0.35, ease: "easeInOut" }}
+          className="absolute inset-0 w-full h-full object-contain"
+        />
+      </AnimatePresence>
+
+      <button
+        onClick={() => go(-1)}
+        className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 transition-colors z-10"
+        aria-label="Anterior"
+      >
+        <ChevronLeft size={22} />
+      </button>
+      <button
+        onClick={() => go(1)}
+        className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 transition-colors z-10"
+        aria-label="Próxima"
+      >
+        <ChevronRight size={22} />
+      </button>
+
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+        {CAROUSEL_IMAGES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
+            className={`w-2 h-2 rounded-full transition-all ${i === current ? "bg-secondary w-4" : "bg-white/60"}`}
+            aria-label={`Foto ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const TABS = [
   {
     label: "Granitos Litoral",
     company: "Granitos Litoral LTDA — Ibiraçu, ES",
-    items: [
-      {
-        img: "/granitos-litoral-01.jpg",
-        title: "Percepção de Riscos",
-        subtitle: "Palestra interativa sobre identificação e prevenção de riscos no ambiente de trabalho, com participação ativa dos colaboradores.",
-        result: "Equipe capacitada com sucesso",
-      },
-    ],
+    carousel: true,
+    title: "Percepção de Riscos",
+    subtitle: "Palestra sobre riscos invisíveis na indústria de rochas ornamentais, com destaque para os riscos químicos das resinas epóxi e a importância do uso de EPI.",
+    result: "Equipe capacitada com sucesso",
+    speakers: "Priscila, Carolina, Brenda, Izabela e Izadora",
   },
 ];
 
 export function Projects() {
   const [activeTab, setActiveTab] = useState(0);
+  const tab = TABS[activeTab];
 
   return (
     <section id="projetos" className="py-16 md:py-24 bg-background">
@@ -35,7 +101,7 @@ export function Projects() {
 
         {/* Abas */}
         <div className="flex flex-wrap gap-2 justify-center mb-10">
-          {TABS.map((tab, i) => (
+          {TABS.map((t, i) => (
             <button
               key={i}
               onClick={() => setActiveTab(i)}
@@ -45,17 +111,15 @@ export function Projects() {
                   : "bg-background text-foreground border-transparent hover:border-primary/30 hover:bg-primary/5"
               }`}
             >
-              {tab.label}
+              {t.label}
             </button>
           ))}
         </div>
 
-        {/* Empresa */}
         <p className="text-center text-sm text-muted-foreground mb-8 font-medium">
-          {TABS[activeTab].company}
+          {tab.company}
         </p>
 
-        {/* Cards */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -63,31 +127,25 @@ export function Projects() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="max-w-3xl mx-auto bg-white border border-border shadow-lg overflow-hidden"
           >
-            {TABS[activeTab].items.map((item, i) => (
-              <div
-                key={i}
-                className="bg-white border border-border shadow-md hover:-translate-y-2 transition-transform duration-300 overflow-hidden group"
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <ImageCarousel />
+
+            <div className="p-8">
+              <h3 className="font-display text-3xl text-foreground mb-3">{tab.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-5">{tab.subtitle}</p>
+
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-2 text-sm font-semibold text-primary">
+                  <CheckCircle size={16} />
+                  {tab.result}
                 </div>
-                <div className="p-6">
-                  <h3 className="font-display text-2xl text-foreground mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">{item.subtitle}</p>
-                  <div className="flex items-center gap-2 text-sm font-semibold text-primary">
-                    <CheckCircle size={16} />
-                    {item.result}
-                  </div>
+                <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <Users size={16} className="mt-0.5 shrink-0 text-secondary" />
+                  <span><strong className="text-foreground">Palestrantes:</strong> {tab.speakers}</span>
                 </div>
               </div>
-            ))}
+            </div>
           </motion.div>
         </AnimatePresence>
 

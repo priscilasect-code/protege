@@ -4,62 +4,14 @@ import { CheckCircle } from "lucide-react";
 
 const TABS = [
   {
-    label: "Indústria Têxtil",
-    company: "Empresa A — João Neiva, ES",
+    label: "Granitos Litoral",
+    company: "Granitos Litoral LTDA — Ibiraçu, ES",
     items: [
       {
-        img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80",
-        title: "Treinamento de EPI",
-        subtitle: "Capacitação completa da equipe de produção sobre uso correto de equipamentos.",
-        result: "Redução de 85% em acidentes",
-      },
-      {
-        img: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80",
-        title: "Avaliação de Riscos",
-        subtitle: "Mapeamento de todos os pontos críticos do chão de fábrica.",
-        result: "100% das NRs atendidas",
-      },
-      {
-        img: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600&q=80",
-        title: "Palestra de Prevenção",
-        subtitle: "Conscientização sobre riscos físicos e químicos no ambiente industrial.",
-        result: "200 colaboradores treinados",
-      },
-    ],
-  },
-  {
-    label: "Logística",
-    company: "Empresa B — Aracruz, ES",
-    items: [
-      {
-        img: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&q=80",
-        title: "Segurança em Carga e Descarga",
-        subtitle: "Treinamento prático para operadores de empilhadeira e carregadores.",
-        result: "0 acidentes no trimestre",
-      },
-      {
-        img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80",
-        title: "Sinalização de Segurança",
-        subtitle: "Instalação e orientação sobre sinalizações obrigatórias no depósito.",
-        result: "Conformidade legal obtida",
-      },
-    ],
-  },
-  {
-    label: "Alimentício",
-    company: "Empresa C — Ibiraçu, ES",
-    items: [
-      {
-        img: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80",
-        title: "Higiene e Segurança Alimentar",
-        subtitle: "Implementação de procedimentos de higiene para manipuladores de alimentos.",
-        result: "Certificação obtida",
-      },
-      {
-        img: "https://images.unsplash.com/photo-1565117131175-3a6e4fc8b1a1?w=600&q=80",
-        title: "Workshop de Boas Práticas",
-        subtitle: "Treinamento dinâmico sobre contaminação cruzada e armazenamento seguro.",
-        result: "100% da equipe certificada",
+        img: "/granitos-litoral-01.jpg",
+        title: "Percepção de Riscos",
+        subtitle: "Palestra interativa sobre identificação e prevenção de riscos no ambiente de trabalho, com participação ativa dos colaboradores.",
+        result: "Equipe capacitada com sucesso",
       },
     ],
   },

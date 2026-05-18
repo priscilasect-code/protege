@@ -22,7 +22,7 @@ function ImageCarousel() {
   };
 
   return (
-    <div className="relative overflow-hidden bg-black" style={{ height: 380 }}>
+    <div className="relative overflow-hidden bg-neutral-100" style={{ height: 520 }}>
       <AnimatePresence mode="wait" custom={direction}>
         <motion.img
           key={current}
@@ -37,32 +37,32 @@ function ImageCarousel() {
           initial="enter"
           animate="center"
           exit="exit"
-          transition={{ duration: 0.35, ease: "easeInOut" }}
-          className="absolute inset-0 w-full h-full object-contain"
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          className="absolute inset-0 w-full h-full object-cover"
         />
       </AnimatePresence>
 
       <button
         onClick={() => go(-1)}
-        className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 transition-colors z-10"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-primary p-2.5 rounded-full shadow transition-all z-10"
         aria-label="Anterior"
       >
-        <ChevronLeft size={22} />
+        <ChevronLeft size={20} />
       </button>
       <button
         onClick={() => go(1)}
-        className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 transition-colors z-10"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-primary p-2.5 rounded-full shadow transition-all z-10"
         aria-label="Próxima"
       >
-        <ChevronRight size={22} />
+        <ChevronRight size={20} />
       </button>
 
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {CAROUSEL_IMAGES.map((_, i) => (
           <button
             key={i}
             onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
-            className={`w-2 h-2 rounded-full transition-all ${i === current ? "bg-secondary w-4" : "bg-white/60"}`}
+            className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? "bg-secondary w-6" : "bg-white/70 w-1.5"}`}
             aria-label={`Foto ${i + 1}`}
           />
         ))}
@@ -128,7 +128,7 @@ export function Projects() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.3 }}
-            className="max-w-3xl mx-auto bg-white border border-border shadow-lg overflow-hidden"
+            className="max-w-5xl mx-auto bg-white overflow-hidden"
           >
             <ImageCarousel />
 

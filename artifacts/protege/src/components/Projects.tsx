@@ -85,7 +85,7 @@ function DonutChart({ data, label }: { data: DonutData; label: string }) {
         ].map((s) => (
           <span key={s.label} className="flex items-center gap-1 text-muted-foreground">
             <span className="w-2 h-2 rounded-full inline-block" style={{ background: s.color }} />
-            {s.label} ({s.value})
+            {s.label} ({s.value}) {Math.round((s.value / total) * 100)}%
           </span>
         ))}
       </div>

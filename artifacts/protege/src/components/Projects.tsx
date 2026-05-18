@@ -136,7 +136,7 @@ export function Projects() {
               <h3 className="font-display text-3xl text-foreground mb-3">{tab.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-5">{tab.subtitle}</p>
 
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 mb-10">
                 <div className="flex items-center gap-2 text-sm font-semibold text-primary">
                   <CheckCircle size={16} />
                   {tab.result}
@@ -145,6 +145,45 @@ export function Projects() {
                   <Users size={16} className="mt-0.5 shrink-0 text-secondary" />
                   <span><strong className="text-foreground">Palestrantes:</strong> {tab.speakers}</span>
                 </div>
+              </div>
+
+              {/* Avaliação do DDS */}
+              <div className="border-t border-border pt-8">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="inline-block py-1 px-3 rounded-full bg-secondary/20 text-secondary font-bold text-xs tracking-widest uppercase border border-secondary/30">
+                    Avaliação do DDS
+                  </span>
+                </div>
+                <p className="text-xs text-muted-foreground mb-6">
+                  Avaliação aplicada com <strong className="text-foreground">19 dos 20 participantes presentes</strong>, de um grupo-alvo de 30 colaboradores.
+                </p>
+
+                {/* Destaque 100% */}
+                <div className="bg-primary/5 border border-primary/20 p-4 mb-6 flex items-center gap-3">
+                  <CheckCircle size={22} className="text-primary shrink-0" />
+                  <p className="text-sm font-semibold text-primary">
+                    100% dos colaboradores compreenderam a importância do uso imediato de EPIs para prevenir doenças como a silicose.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {[
+                    { img: "/dds-grafico-1.png", label: "1. Identificação de riscos invisíveis" },
+                    { img: "/dds-grafico-2.png", label: "2. Clareza da linguagem e exemplos" },
+                    { img: "/dds-grafico-3.png", label: "3. Importância do uso de EPIs" },
+                    { img: "/dds-grafico-4.png", label: "4. Organização e duração do DDS" },
+                    { img: "/dds-grafico-5.png", label: "5. Higiene e organização do ambiente" },
+                  ].map((g, i) => (
+                    <div key={i} className="flex flex-col items-center gap-2">
+                      <img src={g.img} alt={g.label} className="w-full max-w-[220px] h-auto" />
+                      <p className="text-xs text-center text-muted-foreground font-medium leading-snug">{g.label}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="text-xs text-muted-foreground mt-6 italic">
+                  A maioria aprovou a didática, organização e importância dos EPIs. 26,3% ainda sentem dificuldade em identificar riscos invisíveis, indicando oportunidade de reforço nessa área.
+                </p>
               </div>
             </div>
           </motion.div>

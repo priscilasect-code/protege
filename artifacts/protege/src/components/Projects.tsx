@@ -9,6 +9,7 @@ const CAROUSEL_IMAGES = [
   "/granitos-litoral-03.jpg",
   "/granitos-litoral-05.jpg",
   "/granitos-litoral-02.jpg",
+  "/granitos-litoral-06.jpg",
 ];
 
 function ImageCarousel() {

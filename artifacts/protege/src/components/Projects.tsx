@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, Users } from "lucide-react";
 
+const BASE = import.meta.env.BASE_URL;
+
 const CAROUSEL_IMAGES = [
-  "/granitos-litoral-dds.png",
-  "/granitos-litoral-01.jpg",
-  "/granitos-litoral-04.jpg",
-  "/granitos-litoral-03.jpg",
-  "/granitos-litoral-05.jpg",
-  "/granitos-litoral-02.jpg",
-  "/granitos-litoral-06.jpg",
+  `${BASE}granitos-litoral-dds.png`,
+  `${BASE}granitos-litoral-01.jpg`,
+  `${BASE}granitos-litoral-04.jpg`,
+  `${BASE}granitos-litoral-03.jpg`,
+  `${BASE}granitos-litoral-05.jpg`,
+  `${BASE}granitos-litoral-02.jpg`,
+  `${BASE}granitos-litoral-06.jpg`,
 ];
 
 const COLORS = {

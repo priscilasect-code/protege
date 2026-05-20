@@ -220,7 +220,7 @@ const TABS = [
     subtitle:
       "Foram abordados temas como o uso correto de EPIs no manuseio de materiais recicláveis, cuidados no contato com resíduos e os riscos de doenças causadas por materiais contaminados, reforçando a importância da prevenção e da segurança no ambiente de trabalho.",
     result: "Maior conscientização e adoção de práticas mais seguras no trabalho",
-    speakers: "Equipe PROTEGE",
+    speakers: "Thais, Edla, Leide, Joevelym e Débora",
     images: CTJON_IMAGES,
     evaluation: "ctjon" as const,
   },

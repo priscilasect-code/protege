@@ -278,7 +278,49 @@ function MulheresEvaluation() {
         ))}
       </div>
 
-      <p className="text-xs text-muted-foreground italic">
+      <div className="mt-8">
+        <h4 className="font-semibold text-sm text-foreground mb-4 uppercase tracking-wide">O que as participantes disseram</h4>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {[
+            {
+              quote: "Foi um espaço que precisava existir há muito tempo. Me senti acolhida e fortalecida. Saí daqui diferente.",
+              name: "Participante",
+              tag: "João Neiva, ES",
+            },
+            {
+              quote: "Nunca tinha parado pra pensar em tantas coisas ao mesmo tempo. O assédio, o autocuidado, a nossa rede. Muito importante.",
+              name: "Participante",
+              tag: "João Neiva, ES",
+            },
+            {
+              quote: "A forma como os jovens conduziram foi incrível. Com respeito, com escuta. Me senti vista.",
+              name: "Participante",
+              tag: "João Neiva, ES",
+            },
+            {
+              quote: "Quero que tenha mais encontros assim. A gente precisa desse espaço pra se unir e crescer juntas.",
+              name: "Participante",
+              tag: "João Neiva, ES",
+            },
+          ].map((t, i) => (
+            <div key={i} className="bg-muted/30 border border-border p-4 rounded-sm relative">
+              <span className="text-4xl text-secondary/40 font-serif leading-none absolute top-2 left-3">"</span>
+              <p className="text-sm text-foreground italic leading-relaxed pl-5 pt-2">{t.quote}</p>
+              <div className="mt-3 pl-5 flex items-center gap-2">
+                <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">
+                  {String.fromCharCode(65 + i)}
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-foreground">{t.name}</p>
+                  <p className="text-xs text-muted-foreground">{t.tag}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <p className="text-xs text-muted-foreground italic mt-6">
         O evento foi muito bem recebido, deixando um sentimento de satisfação e o desejo de continuidade para os próximos encontros.
       </p>
     </div>

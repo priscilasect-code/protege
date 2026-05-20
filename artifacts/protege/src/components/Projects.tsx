@@ -172,6 +172,16 @@ const MULHERES_IMAGES = [
   `${BASE}mulheres-05.jpg`,
 ];
 
+const CTJON_IMAGES = [
+  `${BASE}ctjon-flyer.png`,
+  `${BASE}ctjon-01.jpg`,
+  `${BASE}ctjon-02.jpg`,
+  `${BASE}ctjon-03.jpg`,
+  `${BASE}ctjon-04.jpg`,
+  `${BASE}ctjon-05.jpg`,
+  `${BASE}ctjon-06.jpg`,
+];
+
 const DDS_CHARTS_GRANITOS: { data: DonutData; label: string }[] = [
   { data: { otimo: 7, bom: 7, ruim: 5 }, label: "1. Identificação de riscos invisíveis" },
   { data: { otimo: 9, bom: 9, ruim: 1 }, label: "2. Clareza da linguagem e exemplos" },
@@ -203,6 +213,17 @@ const TABS = [
     images: MULHERES_IMAGES,
     evaluation: "mulheres" as const,
   },
+  {
+    label: "CTJON",
+    company: "CTJON – Centro de Triagem de Materiais Recicláveis — João Neiva, ES",
+    title: "Reciclagem e Segurança",
+    subtitle:
+      "Foram abordados temas como o uso correto de EPIs no manuseio de materiais recicláveis, cuidados no contato com resíduos e os riscos de doenças causadas por materiais contaminados, reforçando a importância da prevenção e da segurança no ambiente de trabalho.",
+    result: "Maior conscientização e adoção de práticas mais seguras no trabalho",
+    speakers: "Equipe PROTEGE",
+    images: CTJON_IMAGES,
+    evaluation: "ctjon" as const,
+  },
 ];
 
 function GranitosEvaluation() {
@@ -230,6 +251,98 @@ function GranitosEvaluation() {
 
       <p className="text-xs text-muted-foreground mt-8 italic">
         A maioria aprovou a didática, organização e importância dos EPIs. 26,3% ainda sentem dificuldade em identificar riscos invisíveis, indicando oportunidade de reforço nessa área.
+      </p>
+    </div>
+  );
+}
+
+function CtjonEvaluation() {
+  return (
+    <div className="border-t border-border pt-8">
+      <span className="inline-block py-1 px-3 rounded-full bg-secondary/20 text-secondary font-bold text-xs tracking-widest uppercase border border-secondary/30 mb-2">
+        Avaliação do DDS
+      </span>
+      <p className="text-xs text-muted-foreground mb-6">
+        Avaliação coletada ao final do DDS com os colaboradores do CTJON presentes.
+      </p>
+
+      <div className="bg-primary/5 border border-primary/20 p-4 mb-8 flex items-center gap-3">
+        <CheckCircle size={22} className="text-primary shrink-0" />
+        <p className="text-sm font-semibold text-primary">
+          Alta aprovação — clareza das orientações e relevância dos temas foram os pontos mais destacados.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+        {[
+          {
+            icon: "🪖",
+            title: "Uso correto de EPIs",
+            desc: "Os participantes passaram a compreender melhor a necessidade do uso de EPIs no manuseio diário de materiais recicláveis.",
+          },
+          {
+            icon: "⚠️",
+            title: "Consciência dos riscos",
+            desc: "Aumento da atenção aos riscos de contaminação por materiais e resíduos, com foco em prevenção de doenças.",
+          },
+          {
+            icon: "📋",
+            title: "Normas de segurança",
+            desc: "Maior engajamento com as normas de segurança do trabalho e incentivo à adoção de práticas mais seguras no cotidiano.",
+          },
+        ].map((item) => (
+          <div key={item.title} className="bg-muted/40 border border-border p-4 rounded-sm">
+            <div className="text-2xl mb-2">{item.icon}</div>
+            <h4 className="font-semibold text-sm text-foreground mb-1">{item.title}</h4>
+            <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-8">
+        <h4 className="font-semibold text-sm text-foreground mb-4 uppercase tracking-wide">O que os participantes disseram</h4>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {[
+            {
+              quote: "Aprendi coisas que uso todo dia aqui no trabalho e nunca tinha parado pra pensar. Importante demais.",
+              name: "Colaborador",
+              tag: "CTJON, João Neiva, ES",
+            },
+            {
+              quote: "A gente mexe com material reciclável todo dia e não sabia dos riscos que corria. Agora sei como me proteger.",
+              name: "Colaborador",
+              tag: "CTJON, João Neiva, ES",
+            },
+            {
+              quote: "Foi bem explicado, deu pra entender fácil. A equipe trouxe exemplos do nosso dia a dia mesmo.",
+              name: "Colaborador",
+              tag: "CTJON, João Neiva, ES",
+            },
+            {
+              quote: "Muito bom! Espero que venham mais vezes. Segurança no trabalho é coisa séria e a gente precisa saber.",
+              name: "Colaborador",
+              tag: "CTJON, João Neiva, ES",
+            },
+          ].map((t, i) => (
+            <div key={i} className="bg-muted/30 border border-border p-4 rounded-sm relative">
+              <span className="text-4xl text-secondary/40 font-serif leading-none absolute top-2 left-3">"</span>
+              <p className="text-sm text-foreground italic leading-relaxed pl-5 pt-2">{t.quote}</p>
+              <div className="mt-3 pl-5 flex items-center gap-2">
+                <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">
+                  {String.fromCharCode(65 + i)}
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-foreground">{t.name}</p>
+                  <p className="text-xs text-muted-foreground">{t.tag}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <p className="text-xs text-muted-foreground italic mt-6">
+        A atividade foi considerada produtiva e essencial para o dia a dia dos trabalhadores do centro de triagem.
       </p>
     </div>
   );
@@ -390,7 +503,13 @@ export function Projects() {
                 </div>
               </div>
 
-              {tab.evaluation === "granitos" ? <GranitosEvaluation /> : <MulheresEvaluation />}
+              {tab.evaluation === "granitos" ? (
+                <GranitosEvaluation />
+              ) : tab.evaluation === "ctjon" ? (
+                <CtjonEvaluation />
+              ) : (
+                <MulheresEvaluation />
+              )}
             </div>
           </motion.div>
         </AnimatePresence>

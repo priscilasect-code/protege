@@ -192,6 +192,12 @@ const KANZEON_IMAGES = [
   `${BASE}kanzeon-06.jpg`,
 ];
 
+const MAIPET_IMAGES = [
+  `${BASE}maipet-flyer.png`,
+  `${BASE}maipet-02.jpg`,
+  `${BASE}maipet-01.jpg`,
+];
+
 const DDS_CHARTS_GRANITOS: { data: DonutData; label: string }[] = [
   { data: { otimo: 7, bom: 7, ruim: 5 }, label: "1. Identificação de riscos invisíveis" },
   { data: { otimo: 9, bom: 9, ruim: 1 }, label: "2. Clareza da linguagem e exemplos" },
@@ -244,6 +250,17 @@ const TABS = [
     speakers: "Aline, Layza, Rafaela, Kailane, Ludmila e Jéssica Marina",
     images: KANZEON_IMAGES,
     evaluation: "kanzeon" as const,
+  },
+  {
+    label: "MAI AgroPet",
+    company: "MAI AgroPet — João Neiva, ES",
+    title: "Relacionamento Interpessoal no Trabalho",
+    subtitle:
+      "A importância do relacionamento interpessoal no ambiente de trabalho e seu impacto no desenvolvimento de pequenas empresas. Foram apresentados os pontos positivos de uma equipe integrada e, com suporte de manchetes jornalísticas reais, os impactos de um mau relacionamento no ambiente laboral. Também foi aplicada a dinâmica \"EU PRECISO DE VOCÊ\", gerando reflexão sobre a interdependência das funções.",
+    result: "Retornos positivos dos colaboradores, validando a relevância da abordagem",
+    speakers: "Jessica Rodrigues, Ana Clara, Ana Carolina e Michely",
+    images: MAIPET_IMAGES,
+    evaluation: "maipet" as const,
   },
 ];
 
@@ -461,6 +478,61 @@ function MulheresEvaluation() {
   );
 }
 
+function MaipetEvaluation() {
+  return (
+    <div className="border-t border-border pt-8">
+      <span className="inline-block py-1 px-3 rounded-full bg-secondary/20 text-secondary font-bold text-xs tracking-widest uppercase border border-secondary/30 mb-2">
+        Avaliação do DDS
+      </span>
+      <p className="text-xs text-muted-foreground mb-6">
+        Avaliação coletada ao final do encontro com os colaboradores da MAI AgroPet.
+      </p>
+
+      <div className="bg-primary/5 border border-primary/20 p-4 mb-8 flex items-center gap-3">
+        <Star size={22} className="text-secondary shrink-0" fill="currentColor" />
+        <p className="text-sm font-semibold text-primary">
+          Retornos positivos dos colaboradores — abordagem e dinâmicas consideradas altamente relevantes para o clima organizacional.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+        {[
+          {
+            icon: "🤝",
+            title: "Do Tema",
+            desc: "Escolha estratégica e altamente relevante, considerando o impacto direto que o clima organizacional tem na produtividade de empresas da região.",
+          },
+          {
+            icon: "📰",
+            title: "Da Metodologia",
+            desc: "A utilização de dados reais (manchetes jornalísticas) combinada com a dinâmica prática garantiu o engajamento e a reflexão da equipe.",
+          },
+          {
+            icon: "🔗",
+            title: "Dinâmica \"EU PRECISO DE VOCÊ\"",
+            desc: "Atividade que gerou reflexão profunda sobre a interdependência das funções e a relevância de cada colaborador para o fluxo de trabalho.",
+          },
+          {
+            icon: "🌟",
+            title: "Equipe Integrada",
+            desc: "Apresentação dos pontos positivos de uma equipe coesa, destacando como o bom relacionamento impulsiona a produtividade em pequenas empresas.",
+          },
+        ].map((item) => (
+          <div key={item.title} className="bg-muted/40 border border-border p-4 rounded-sm">
+            <div className="text-2xl mb-2">{item.icon}</div>
+            <h4 className="font-semibold text-sm text-foreground mb-1">{item.title}</h4>
+            <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <p className="text-xs text-muted-foreground italic mt-2">
+        A atividade foi bem recebida pelos colaboradores, que reconheceram a importância do tema para o ambiente de trabalho e para o crescimento coletivo da empresa.
+      </p>
+    </div>
+  );
+}
+
 function KanzeonEvaluation() {
   return (
     <div className="border-t border-border pt-8">
@@ -587,6 +659,8 @@ export function Projects() {
                 <CtjonEvaluation />
               ) : tab.evaluation === "kanzeon" ? (
                 <KanzeonEvaluation />
+              ) : tab.evaluation === "maipet" ? (
+                <MaipetEvaluation />
               ) : (
                 <MulheresEvaluation />
               )}

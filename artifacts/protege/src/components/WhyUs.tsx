@@ -104,7 +104,7 @@ export function WhyUs() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setActive(true); },
-      { threshold: 0.2 }
+      { threshold: 0, rootMargin: "0px 0px -50px 0px" }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();

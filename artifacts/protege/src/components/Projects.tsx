@@ -182,6 +182,16 @@ const CTJON_IMAGES = [
   `${BASE}ctjon-06.jpg`,
 ];
 
+const KANZEON_IMAGES = [
+  `${BASE}kanzeon-flyer.jpg`,
+  `${BASE}kanzeon-01.jpg`,
+  `${BASE}kanzeon-02.jpg`,
+  `${BASE}kanzeon-03.jpg`,
+  `${BASE}kanzeon-04.jpg`,
+  `${BASE}kanzeon-05.jpg`,
+  `${BASE}kanzeon-06.jpg`,
+];
+
 const DDS_CHARTS_GRANITOS: { data: DonutData; label: string }[] = [
   { data: { otimo: 7, bom: 7, ruim: 5 }, label: "1. Identificação de riscos invisíveis" },
   { data: { otimo: 9, bom: 9, ruim: 1 }, label: "2. Clareza da linguagem e exemplos" },
@@ -223,6 +233,17 @@ const TABS = [
     speakers: "Thais, Edla, Leide, Joevelym e Débora",
     images: CTJON_IMAGES,
     evaluation: "ctjon" as const,
+  },
+  {
+    label: "Kanzeon",
+    company: "Kanzeon Escola de Cerâmica — Ibiraçu, ES",
+    title: "Segurança e Cerâmica",
+    subtitle:
+      "Foram abordados o uso correto de EPIs, o manuseio seguro de peças e ferramentas de cerâmica, além da importância da organização e limpeza no ambiente para prevenção de acidentes.",
+    result: "Maior conscientização, melhoria nas práticas e ambiente mais seguro",
+    speakers: "Aline, Layza, Rafaela, Kailane, Ludmila e Jéssica Marina",
+    images: KANZEON_IMAGES,
+    evaluation: "kanzeon" as const,
   },
 ];
 
@@ -440,6 +461,63 @@ function MulheresEvaluation() {
   );
 }
 
+function KanzeonEvaluation() {
+  return (
+    <div className="border-t border-border pt-8">
+      <span className="inline-block py-1 px-3 rounded-full bg-secondary/20 text-secondary font-bold text-xs tracking-widest uppercase border border-secondary/30 mb-2">
+        Avaliação do DDS
+      </span>
+      <p className="text-xs text-muted-foreground mb-6">
+        Avaliação coletada ao final do encontro com as participantes da Kanzeon Escola de Cerâmica.
+      </p>
+
+      <div className="bg-primary/5 border border-primary/20 p-4 mb-8 flex items-center gap-3">
+        <Star size={22} className="text-secondary shrink-0" fill="currentColor" />
+        <p className="text-sm font-semibold text-primary">
+          Alta aprovação — orientações consideradas claras, úteis e diretamente aplicáveis ao dia a dia.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+        {[
+          {
+            icon: "🪖",
+            title: "Uso correto de EPIs",
+            desc: "As participantes compreenderam a importância dos equipamentos de proteção adequados para cada atividade na prática da cerâmica.",
+          },
+          {
+            icon: "🏺",
+            title: "Manuseio seguro",
+            desc: "Maior atenção ao manuseio de peças e ferramentas de cerâmica, reduzindo riscos de acidentes no dia a dia.",
+          },
+          {
+            icon: "✨",
+            title: "Ambiente organizado",
+            desc: "Reforço da importância da limpeza e organização do espaço, promovendo um ambiente mais seguro e produtivo para todas.",
+          },
+        ].map((item) => (
+          <div key={item.title} className="bg-muted/40 border border-border p-4 rounded-sm">
+            <div className="text-2xl mb-2">{item.icon}</div>
+            <h4 className="font-semibold text-sm text-foreground mb-1">{item.title}</h4>
+            <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-muted/30 border border-border p-6 rounded-sm">
+        <h4 className="font-semibold text-sm text-foreground mb-3 uppercase tracking-wide">Feedback Geral</h4>
+        <p className="text-sm text-muted-foreground leading-relaxed italic">
+          "O encontro foi muito bem avaliado, com alta aprovação das participantes, destacando a relevância das orientações para a prática segura no trabalho com cerâmica. A atividade foi considerada clara, útil e diretamente aplicável ao dia a dia."
+        </p>
+      </div>
+
+      <p className="text-xs text-muted-foreground italic mt-6">
+        Os resultados foram positivos, com maior conscientização sobre segurança, melhoria nas práticas de trabalho e mais cuidado com o ambiente, promovendo um espaço mais seguro e organizado.
+      </p>
+    </div>
+  );
+}
+
 export function Projects() {
   const [activeTab, setActiveTab] = useState(0);
   const tab = TABS[activeTab];
@@ -507,6 +585,8 @@ export function Projects() {
                 <GranitosEvaluation />
               ) : tab.evaluation === "ctjon" ? (
                 <CtjonEvaluation />
+              ) : tab.evaluation === "kanzeon" ? (
+                <KanzeonEvaluation />
               ) : (
                 <MulheresEvaluation />
               )}

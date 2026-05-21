@@ -61,13 +61,13 @@ export function Navbar() {
             </span>
           </a>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-5 xl:gap-8">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => scrollTo(e, link.href)}
-                className="text-sm font-semibold text-primary-foreground/90 hover:text-secondary transition-colors relative group py-2"
+                className="text-xs xl:text-sm font-semibold text-primary-foreground/90 hover:text-secondary transition-colors relative group py-2 whitespace-nowrap"
               >
                 {link.label}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full" />
@@ -76,7 +76,7 @@ export function Navbar() {
           </div>
 
           <button
-            className="md:hidden text-primary-foreground p-2 z-[70] relative"
+            className="lg:hidden text-primary-foreground p-2 z-[70] relative"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Abrir menu"
           >
@@ -88,7 +88,7 @@ export function Navbar() {
       {/* Menu mobile — fora da nav para evitar conflito de camadas */}
       <div
         className={cn(
-          "fixed inset-0 bg-primary z-[60] flex flex-col items-center justify-center gap-8 transition-all duration-300 md:hidden",
+          "fixed inset-0 bg-primary z-[60] flex flex-col items-center justify-center gap-8 transition-all duration-300 lg:hidden",
           mobileMenuOpen
             ? "opacity-100 visible translate-y-0"
             : "opacity-0 invisible -translate-y-full"

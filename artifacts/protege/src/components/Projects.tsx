@@ -239,7 +239,6 @@ const MAIPET_IMAGES = [
   `${BASE}maipet-02.jpg`,
   `${BASE}maipet-01.jpg`,
   `${BASE}maipet-video1.mp4`,
-  `${BASE}maipet-video2.mp4`,
 ];
 
 const DDS_CHARTS_GRANITOS: { data: DonutData; label: string }[] = [

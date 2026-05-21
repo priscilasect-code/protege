@@ -111,7 +111,7 @@ export function WhyUs() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-primary py-20 md:py-28">
+    <section id="por-que" ref={sectionRef} className="bg-primary py-20 md:py-28">
       <div className="container mx-auto px-4 md:px-6">
 
         <div className="text-center mb-16">

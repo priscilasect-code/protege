@@ -85,10 +85,15 @@ function DonutChart({ data, label }: { data: DonutData; label: string }) {
   );
 }
 
+function isVideo(src: string) {
+  return src.endsWith(".mp4") || src.endsWith(".webm") || src.endsWith(".mov");
+}
+
 function ImageCarousel({ images }: { images: string[] }) {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
   const touchStartX = React.useRef<number | null>(null);
+  const videoRef = React.useRef<HTMLVideoElement | null>(null);
 
   const go = (dir: number) => {
     setDirection(dir);
@@ -106,19 +111,20 @@ function ImageCarousel({ images }: { images: string[] }) {
     touchStartX.current = null;
   };
 
+  const currentSrc = images[current];
+  const currentIsVideo = isVideo(currentSrc);
+
   return (
     <div>
       <div
-        className="relative overflow-hidden bg-neutral-100"
+        className="relative overflow-hidden bg-neutral-900"
         style={{ height: 520 }}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
         <AnimatePresence mode="wait" custom={direction}>
-          <motion.img
+          <motion.div
             key={current}
-            src={images[current]}
-            alt={`Foto ${current + 1}`}
             custom={direction}
             variants={{
               enter: (d: number) => ({ x: d > 0 ? "100%" : "-100%", opacity: 0 }),
@@ -129,23 +135,59 @@ function ImageCarousel({ images }: { images: string[] }) {
             animate="center"
             exit="exit"
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="absolute inset-0 w-full h-full object-contain select-none"
-            draggable={false}
-          />
+            className="absolute inset-0 w-full h-full flex items-center justify-center"
+          >
+            {currentIsVideo ? (
+              <video
+                ref={videoRef}
+                src={currentSrc}
+                controls
+                playsInline
+                className="w-full h-full object-contain"
+                style={{ maxHeight: 520 }}
+              />
+            ) : (
+              <img
+                src={currentSrc}
+                alt={`Foto ${current + 1}`}
+                className="w-full h-full object-contain select-none"
+                draggable={false}
+              />
+            )}
+          </motion.div>
         </AnimatePresence>
+
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={() => go(-1)}
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full w-9 h-9 flex items-center justify-center transition-all z-10"
+              aria-label="Anterior"
+            >
+              ‹
+            </button>
+            <button
+              onClick={() => go(1)}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full w-9 h-9 flex items-center justify-center transition-all z-10"
+              aria-label="Próximo"
+            >
+              ›
+            </button>
+          </>
+        )}
       </div>
 
       <div className="flex justify-center items-center gap-1.5 py-3 bg-white">
-        {images.map((_, i) => (
+        {images.map((src, i) => (
           <button
             key={i}
             onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
-            className={`rounded-full transition-all duration-300 ${
+            className={`rounded-full transition-all duration-300 flex items-center justify-center ${
               i === current
                 ? "bg-primary w-4 h-1.5"
                 : "bg-border w-1.5 h-1.5 hover:bg-primary/40"
             }`}
-            aria-label={`Foto ${i + 1}`}
+            aria-label={isVideo(src) ? `Vídeo ${i + 1}` : `Foto ${i + 1}`}
           />
         ))}
       </div>
@@ -196,6 +238,8 @@ const MAIPET_IMAGES = [
   `${BASE}maipet-flyer.png`,
   `${BASE}maipet-02.jpg`,
   `${BASE}maipet-01.jpg`,
+  `${BASE}maipet-video1.mp4`,
+  `${BASE}maipet-video2.mp4`,
 ];
 
 const DDS_CHARTS_GRANITOS: { data: DonutData; label: string }[] = [

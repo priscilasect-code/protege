@@ -21,7 +21,7 @@ export function Footer() {
             "Prevenção hoje é garantir o amanhã."
           </p>
           <p className="text-xs" style={{ color: "#5a534a" }}>
-            © 2025 PROTEGE. Todos os direitos reservados.
+            © 2026 PROTEGE. Todos os direitos reservados.
           </p>
         </div>
       </div>

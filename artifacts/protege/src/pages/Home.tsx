@@ -5,6 +5,7 @@ import { Values } from "@/components/Values";
 import { About } from "@/components/About";
 import { Services } from "@/components/Services";
 import { Projects } from "@/components/Projects";
+import { WhyUs } from "@/components/WhyUs";
 import { Topics } from "@/components/Topics";
 import { Menu } from "@/components/Menu";
 import { Benefits } from "@/components/Benefits";
@@ -22,6 +23,7 @@ export default function Home() {
         <About />
         <Services />
         <Projects />
+        <WhyUs />
         <Topics />
         <Menu />
         <Benefits />

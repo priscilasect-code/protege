@@ -61,7 +61,7 @@ const STATS = [
   { icon: Building2, value: 5, suffix: "+", label: "Empresas Atendidas" },
   { icon: Users, value: 80, suffix: "+", label: "Colaboradores Impactados" },
   { icon: Award, value: 100, suffix: "%", label: "Aprovação nos DDS" },
-  { icon: TrendingUp, value: 3, suffix: " cidades", label: "Municípios do ES Atendidos" },
+  { icon: TrendingUp, value: 2, suffix: " cidades", label: "Municípios do ES Atendidos" },
 ];
 
 const REASONS = [

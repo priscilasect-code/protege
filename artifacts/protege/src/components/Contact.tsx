@@ -62,15 +62,12 @@ export function Contact() {
             </div>
 
             <div className="flex gap-3 mt-8">
-              <a
-                href="https://www.instagram.com/protegeconsultoria/"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
                 aria-label="Instagram"
                 className="w-10 h-10 rounded-full bg-foreground flex items-center justify-center hover:scale-110 transition-transform"
               >
                 <Instagram size={18} className="text-secondary" />
-              </a>
+              </button>
             </div>
           </motion.div>
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Instagram, Linkedin, Facebook, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram, Send } from "lucide-react";
 
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -62,19 +62,15 @@ export function Contact() {
             </div>
 
             <div className="flex gap-3 mt-8">
-              {[
-                { icon: Instagram, label: "Instagram" },
-                { icon: Linkedin, label: "LinkedIn" },
-                { icon: Facebook, label: "Facebook" },
-              ].map(({ icon: Icon, label }) => (
-                <button
-                  key={label}
-                  aria-label={label}
-                  className="w-10 h-10 rounded-full bg-foreground flex items-center justify-center hover:scale-110 transition-transform"
-                >
-                  <Icon size={18} className="text-secondary" />
-                </button>
-              ))}
+              <a
+                href="https://www.instagram.com/protegeconsultoria/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-10 h-10 rounded-full bg-foreground flex items-center justify-center hover:scale-110 transition-transform"
+              >
+                <Instagram size={18} className="text-secondary" />
+              </a>
             </div>
           </motion.div>
 
